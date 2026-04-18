@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micronanoelectronics | ENSNN</title>
+  <meta name="description" content="Presentation about the 3-year micronanoelectronics program at the National Higher School of Nano Sciences and Nanotechnology.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #00f0ff;
+      --secondary-color: #ff003c;
+      --accent-color: #7000ff;
+      --bg-dark: #050508;
+      --text-main: #f0f0f0;
+      --text-muted: #a0a0b0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Particles Background */
+    #tsparticles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Reveal Overrides */
+    .reveal {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-main);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .reveal h1 {
+      font-size: 3.5em;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 20px rgba(0, 240, 255, 0.3);
+    }
+    
+    .reveal h2 {
+      font-size: 2.2em;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+    }
+
+    .reveal h3 {
+      font-size: 1.8em;
+      color: #fff;
+    }
+
+    .reveal p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: rgba(20, 20, 30, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .module-item {
+      text-align: left;
+      padding: 20px;
+    }
+    .module-item h4 {
+      font-size: 1.1em;
+      color: #fff;
+      margin-bottom: 5px;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 15px;
+    }
+    .module-item p {
+      font-size: 0.85em;
+      margin-left: 18px;
+      margin-bottom: 5px;
+    }
+    .subtext {
+      font-size: 0.75em !important;
+      color: var(--primary-color) !important;
+      margin-top: 5px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .highlight {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .duration-badge {
+      display: inline-block;
+      background: rgba(112, 0, 255, 0.2);
+      border: 1px solid var(--accent-color);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.9em;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Split Layout */
+    .split-layout {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+    }
+    .split-left, .split-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feature-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(112, 0, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.4s ease;
+    }
+    .feature-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.4);
+    }
+
+    /* Flowcharts */
+    .flowchart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      width: 100%;
+    }
+    .flow-node {
+      background: rgba(10, 10, 20, 0.6);
+      border: 1px solid var(--primary-color);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+      position: relative;
+    }
+    .flow-node.accent {
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+    }
+    .flow-node h5 {
+      color: #fff;
+      margin: 0 0 10px 0;
+      font-size: 1.1em;
+    }
+    .flow-node p {
+      font-size: 0.8em;
+      margin: 0;
+    }
+    .flow-arrow {
+      color: var(--accent-color);
+      font-size: 1.8em;
+      animation: pulse 2s infinite;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      text-align: left;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: rgba(20, 20, 30, 0.4);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-color);
+    }
+    .timeline-icon {
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--primary-color);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .timeline-content h4 {
+      margin: 0 0 5px 0;
+      color: #fff;
+      font-size: 1.1em;
+    }
+    .timeline-content p {
+      margin: 0 0 5px 0;
+      font-size: 0.85em;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .reveal .controls { color: var(--primary-color); }
+    .reveal .progress { height: 4px; }
+    .reveal .progress span { background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); }
+  </style>
+</head>
+<body>
+
+  <!-- Particles Background -->
+  <div id="tsparticles"></div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Welcome / Title -->
+      <section>
+        <span class="duration-badge">Engineering Degree Program</span>
+        <h1>Micro & Nanoelectronics</h1>
+        <h3 style="margin-top: 20px;">National Higher School of Nano Sciences<br>& Nanotechnology (ENSNN)</h3>
+        <p style="margin-top: 40px; font-size: 1.3em;">Engineering the infinitesimal to shape the future.</p>
+        <p class="subtext" style="font-size: 0.9em !important; margin-top: 60px; color: rgba(255,255,255,0.4) !important;">Use Arrow Keys to Navigate</p>
+      </section>
+
+      <!-- Slide 2: Specialty Summary (Vision) -->
+      <section>
+        <h2>The Vision & Objectives</h2>
+        <div class="glass-card" style="text-align: left;">
+          <p>The <span class="highlight">Micro- and Nanoelectronics</span> specialty aims to train expert engineers capable of designing, fabricating, modeling, and characterizing miniaturized electronic systems.</p>
+          <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0;"></div>
+          <p>We address the rapid evolution of <span class="highlight">Integrated Circuits, Flexible Electronics, Smart Sensors, and Embedded Systems</span> to meet the growing technological demands in energy, healthcare, IoT, and cybersecurity.</p>
+          <p class="subtext">> Aligning with national tech sovereignty and global R&D standards.</p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Targeted Competencies (Image Split) -->
+      <section>
+        <h2>Targeted Competencies</h2>
+        <div class="split-layout">
+          <div class="split-left">
+            <img src="sensor_network.png" alt="Smart Sensor Network" class="feature-image">
+            <p class="subtext" style="text-align: center; margin-top: 15px;">Smart sensor data-mesh integration at the nanometric scale</p>
+          </div>
+          <div class="split-right module-grid" style="grid-template-columns: 1fr; gap: 15px;">
+            <div class="glass-card module-item" style="padding: 15px;">
+              <h4>Technology & Fabrication</h4>
+              <p>Manufacturing process of CMOS, MEMS/NEMS, and smart sensors.</p>
+              <p class="subtext">❯ Lithography, Vapor Deposition, Etching</p>
+            </div>
+            <div class="glass-card module-item" style="padding: 15px;">
+              <h4>Simulation & EDA Tools</h4>
+              <p>Advanced proficiency in industry-standard CAD/EDA software.</p>
+              <p class="subtext">❯ Cadence, Silvaco TCAD, COMSOL, MATLAB</p>
+            </div>
+            <div class="glass-card module-item" style="padding: 15px;">
+              <h4>Experimental Characterization</h4>
+              <p>Hands-on expertise in nanoscale electrical/structural analysis.</p>
+              <p class="subtext">❯ Electrical Measurements, AFM, SEM Spectroscopy</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Curriculum Highlights Flowchart -->
+      <section>
+        <h2>Curriculum Roadmap</h2>
+        <div class="glass-card" style="padding: 20px;">
+          <div class="timeline">
+            
+            <div class="timeline-item">
+              <div class="timeline-icon">S1-S2</div>
+              <div class="timeline-content">
+                <h4>Foundational Physics & Electronics</h4>
+                <p>Semiconductor Physics, Analog/Digital Electronics, Thin Films, Control Systems.</p>
+                <p class="subtext">Goal: Master the atomic logic and electron transport phenomena.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: var(--accent-color);">
+              <div class="timeline-icon" style="color: var(--accent-color);">S3-S4</div>
+              <div class="timeline-content">
+                <h4>Advanced Design & Modeling</h4>
+                <p>VLSI Circuit Design, Electronic Design Automation (EDA), Microcontrollers, Microtech.</p>
+                <p class="subtext">Goal: Transition from transistor-level to complex system-on-chip architectures.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-icon">S5</div>
+              <div class="timeline-content">
+                <h4>Specialization & Smart Systems</h4>
+                <p>Piezoelectric Micro-Nanodevices, Smart Sensor Networks, Multiphysics Modeling.</p>
+                <p class="subtext">Goal: Interface the physical world with the digital mesh via NEMS/MEMS.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" style="border-left-color: #fff;">
+              <div class="timeline-icon" style="color: #fff; background: rgba(255,255,255,0.1);">S6</div>
+              <div class="timeline-content">
+                <h4>Industrial Immersion (PFE)</h4>
+                <p>Capstone Project / Industrial Internship.</p>
+                <p class="subtext">Goal: Real-world prototyping, industry integration, and R&D capstone.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Digital Design & FPGAs (Flowchart + Image) -->
+      <section>
+        <h2 style="margin-bottom: 10px;">Digital Design & FPGAs</h2>
+        <p style="margin-bottom: 30px; text-align: center; font-size: 1.1em;">Mastering hardware acceleration from RTL to Silicon.</p>
+        
+        <div class="split-layout">
+          <div class="split-left" style="flex: 1.2;">
+            <div class="flowchart" style="flex-direction: column; gap: 10px; margin-top: 0;">
+              
+              <div class="flow-node">
+                <h5>1. RTL Design</h5>
+                <p>System modeling using Verilog & VHDL</p>
+                <p class="subtext">Hardware Description Languages</p>
+              </div>
+              
+              <div class="flow-arrow">↓</div>
+              
+              <div class="flow-node accent">
+                <h5>2. Logic Synthesis & EDA</h5>
+                <p>Translating code to logic gates via CAD tools</p>
+                <p class="subtext">Timing Analysis & Optimization</p>
+              </div>
+              
+              <div class="flow-arrow" style="color: var(--primary-color);">↓</div>
+              
+              <div class="flow-node">
+                <h5>3. FPGA Prototyping</h5>
+                <p>Deploying highly parallel, reconfigurable hardware</p>
+                <p class="subtext">For DSP, AI Acceleration, and IoT</p>
+              </div>
+
+            </div>
+          </div>
+          
+          <div class="split-right">
+            <img src="nano_chip.png" alt="Nano Chip Render" class="feature-image">
+            <p class="subtext" style="text-align: center; margin-top: 15px;">High-performance SoC Prototyping</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Potential Job Sites & Employability -->
+      <section>
+        <h2>Career Trajectories & Job Sites</h2>
+        <div class="module-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+          
+          <div class="glass-card module-item" style="padding: 20px;">
+            <h4 style="font-size: 1.1em; border-left-color: #ff003c;">National Industry</h4>
+            <p style="font-size: 0.85em;">Leading groups such as CONDOR, ENIE, SONATRACH, and Algérie Télécom.</p>
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+            <p class="subtext">Roles: Instrumentation Engineer, Embedded Systems Architect</p>
+          </div>
+
+          <div class="glass-card module-item" style="padding: 20px;">
+            <h4 style="font-size: 1.1em; border-left-color: #7000ff;">R&D & Startups</h4>
+            <p style="font-size: 0.85em;">National research centers (CDTA, CRTSE, CDER) and emerging IoT / DeepTech startups.</p>
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+            <p class="subtext">Roles: R&D Scientist, Nanotech Prototyping Lead, Hardware Entrepreneur</p>
+          </div>
+
+          <div class="glass-card module-item" style="padding: 20px;">
+            <h4 style="font-size: 1.1em; border-left-color: #00f0ff;">Global Tech Giants</h4>
+            <p style="font-size: 0.85em;">Multinational leaders in VLSI and telecom: STMicroelectronics, Intel, Infineon, Huawei.</p>
+            <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+            <p class="subtext">Roles: IC Layout Engineer, Silicon Validation Engineer, FPGA Designer</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Slide 7: Outro -->
+      <section>
+        <h1 style="font-size: 4em;">Thank You</h1>
+        <p style="color: var(--primary-color); font-size: 1.5em; font-weight: 600; margin-top: 20px;">ENSNN</p>
+        <p>National Higher School of Nano Sciences and Nanotechnology</p>
+        <p style="margin-top: 50px; font-size: 0.9em; opacity: 0.6;">Ready to architect the future, atom by atom.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+  
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+
+  <script>
+    // Initialize Reveal.js
+    Reveal.initialize({
+      hash: true,
+      transition: 'convex',
+      backgroundTransition: 'fade',
+      center: true,
+      controlsTutorial: true,
+      progress: true,
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+
+    // Initialize Particles for premium animated background
+    tsParticles.load("tsparticles", {
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab",
+          },
+          resize: true,
+        },
+        modes: {
+          grab: {
+            distance: 200,
+            links: {
+              opacity: 0.5,
+              color: "#00f0ff"
+            }
+          }
+        },
+      },
+      particles: {
+        color: {
+          value: ["#00f0ff", "#7000ff"],
+        },
+        links: {
+          color: "#ffffff",
+          distance: 150,
+          enable: true,
+          opacity: 0.15,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "bounce",
+          },
+          random: false,
+          speed: 0.8,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+            area: 800,
+          },
+          value: 70,
+        },
+        opacity: {
+          value: 0.4,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 2.5 },
+        },
+      },
+      detectRetina: true,
+    });
+  </script>
+</body>
+</html>
